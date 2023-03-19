@@ -16,6 +16,7 @@ struct date {
   char month[20];
   int year;
 };
+
 struct persone {
   char firstname[20];
   char lastname[20];
