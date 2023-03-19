@@ -1,17 +1,18 @@
 -------------------------------------------------------------------
-Projekt, który wciąż jest w fazie rozwoju, to program, który pomoże 
+Ten projekt, który wciąż jest w fazie rozwoju, to program, który pomoże 
 Ci zapisać dane urodzinowe Twoich znajomych, rodziców, 
-kolegów z uczelni, a nawet celebrytów.
+kolegów z uczelni, a nawet celebrytów :D
 -------------------------------------------------------------------
 
 -------------------------------------------------------------------
-Program składa się z menu głównego, w którym użytkownik może
--> przeglądaj listę zarejestrowanych urodzin
+Program składa się z menu głównego, w którym użytkownik może:
 
--> dokonaj korekt w już przygotowanej liście, na przykład usuń 
+-> przeglądać listę zarejestrowanych urodzin
+
+-> dokonać korekt w już gotowej liście, na przykład usunuć 
    jakiś kontakt
    
 -> dodawać nowe osoby
 
--> lub po prostu zakończ program
+-> lub po prostu zakończyć program
 -------------------------------------------------------------------
