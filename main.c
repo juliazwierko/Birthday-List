@@ -7,16 +7,16 @@ char show_menu();
 char get_choice();
 void clear_buffer();
 void task_1();
-int task_2();
+void task_2();
 void task_3();
 void task_4();
+int wyjscie();
 
 struct date {
   int day;
   char month[20];
   int year;
 };
-
 struct persone {
   char firstname[20];
   char lastname[20];
@@ -29,17 +29,17 @@ int main(int argc, char const *argv[]) {
 }
 
 char show_menu(){   
-    printf("\n-----------------------------------------\n");
+    printf("\n-------------------------------------------------\n");
     printf("Witamy na Twojej osobistej liście urodzin\n");
-    printf("-----------------------------------------\n\n");
+    printf("-------------------------------------------------\n\n");
 
-    printf("-----------------------------------------\n");
+    printf("-------------------------------------------------\n");
     printf("Menu:\n");
     printf("1: zobacz listę urodzin\n");
     printf("2: dodaj nowe urodziny do listy\n");
     printf("3: zmiany listy urodzin\n");
     printf("4: wyjscie z programu\n");
-    printf("-----------------------------------------\n\n");
+    printf("-------------------------------------------------\n\n");
 
     char choice = 0;
     while ( (choice = get_choice())!= 'Q' )
@@ -51,9 +51,9 @@ char show_menu(){
                 break;
             
             case '2':
-                printf("\n-----------------------------------------\n");
+                printf("\n-------------------------------------------------\n");
                 printf("dodaj nowe urodziny do listy:\n");
-                printf("-----------------------------------------\n\n");
+                printf("-------------------------------------------------\n\n");
 
                 task_2();
                 break;
@@ -72,6 +72,7 @@ char show_menu(){
                 show_menu();
         }
     }
+    
 
     return 0;
 }
@@ -91,11 +92,10 @@ char get_choice(){
 }
 
 void task_1(){
-
-    return;
 }
 
-int task_2(){
+void task_2(){
+        printf("\n-------------------------------------------------\n");
         struct persone p;
         printf("Wpisz imię : ");
         scanf("%s", p.firstname);
@@ -109,10 +109,10 @@ int task_2(){
         scanf("%d", &p.bd.year);
         printf("\nWpisałeś : %s %s, data urodzin %d %s %d roku",
                 p.firstname, p.lastname, p.bd.day, p.bd.month, p.bd.year);
-        printf("\nPress enter");
-        getchar(); getchar();    
+        printf("\n-------------------------------------------------\n\n");  
 
-        printf("Wpisz 0, jezeli chcesz wrocic do menu.\nWpisz 1, jezeli chcesz chcesz wyjsc z programu.\n");
+        printf("\n-------------------------------------------------\n");
+        printf("Wpisz 0, jezeli chcesz wrocic do menu.\nWpisz 1, jezeli chcesz dodac nowa osobe.\n");
         char choice = 0;
         while ( (choice = get_choice())!= 'Q' )
         {
@@ -120,24 +120,19 @@ int task_2(){
                 case '0':
                     show_menu();
                     break;
-
-                case '1':
-                    return 0;
                 
                 default:
                     printf("Wybierz odpowiednią opcję powyżej\n\n");
-                    show_menu();
             }
         }
-    return 0;
 }
 
 void task_3(){
-
-    return;
 }
 
 void task_4(){
+}
 
-    return;
+int wyjscie(){
+    return 0;
 }
