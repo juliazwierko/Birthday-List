@@ -11,8 +11,35 @@ void task_2();
 void task_3();
 void task_4();
 
+struct date {
+  int day;
+  char month[20];
+  int year;
+};
+struct persone {
+  char firstname[20];
+  char lastname[20];
+  struct date bd;
+};
+
 int main(int argc, char const *argv[]) {  
     show_menu();
+    return 0;
+}
+
+char show_menu(){   
+    printf("\n-----------------------------------------\n");
+    printf("Witamy na Twojej osobistej liście urodzin\n");
+    printf("-----------------------------------------\n\n");
+
+    printf("-----------------------------------------\n");
+    printf("Menu:\n");
+    printf("1: zobacz listę urodzin\n");
+    printf("2: dodaj nowe urodziny do listy\n");
+    printf("3: zmiany listy urodzin\n");
+    printf("4: wyjscie z programu\n");
+    printf("-----------------------------------------\n\n");
+
     char choice = 0;
     while ( (choice = get_choice())!= 'Q' )
     {
@@ -23,7 +50,10 @@ int main(int argc, char const *argv[]) {
                 break;
             
             case '2':
+                printf("\n-----------------------------------------\n");
                 printf("dodaj nowe urodziny do listy:\n");
+                printf("-----------------------------------------\n\n");
+
                 task_2();
                 break;
             
@@ -42,21 +72,6 @@ int main(int argc, char const *argv[]) {
         }
     }
 
-    return 0;
-}
-
-char show_menu(){   
-    printf("\n-----------------------------------------\n");
-    printf("Witamy na Twojej osobistej liście urodzin\n");
-    printf("-----------------------------------------\n\n");
-
-    printf("-----------------------------------------\n");
-    printf("Menu:\n");
-    printf("1: zobacz listę urodzin\n");
-    printf("2: dodaj nowe urodziny do listy\n");
-    printf("3: zmiany listy urodzin\n");
-    printf("4: wyjscie z programu\n");
-    printf("-----------------------------------------\n\n");
     return 0;
 }
 
@@ -80,8 +95,36 @@ void task_1(){
 }
 
 void task_2(){
+        struct persone p;
+        printf("Wpisz imię : ");
+        scanf("%s", p.firstname);
+        printf("Wpisz nazwisko : ");
+        scanf("%s", p.lastname);
+        printf("Urodziy \nDzień : ");
+        scanf("%d", &p.bd.day);
+        printf("Miesiac: ");
+        scanf("%s", p.bd.month);
+        printf("Rok: ");
+        scanf("%d", &p.bd.year);
+        printf("\nWpisałeś : %s %s, data urodzin %d %s %d roku",
+                p.firstname, p.lastname, p.bd.day, p.bd.month, p.bd.year);
+        printf("\nPress enter");
+        getchar(); getchar();    
 
-    return;
+        printf("Wpisz 0, jezeli chcesz wrocic do menu.\n");
+        char powrot = 0;
+        while ( (powrot = get_choice())!= 'Q' )
+        {
+            switch(powrot){
+                case '0':
+                    show_menu();
+                    break;
+                
+                default:
+                    printf("Wybierz odpowiednią opcję powyżej\n\n");
+                    show_menu();
+            }
+        }
 }
 
 void task_3(){
