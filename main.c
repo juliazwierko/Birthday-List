@@ -7,7 +7,7 @@ char show_menu();
 char get_choice();
 void clear_buffer();
 void task_1();
-void task_2();
+int task_2();
 void task_3();
 void task_4();
 
@@ -94,7 +94,7 @@ void task_1(){
     return;
 }
 
-void task_2(){
+int task_2(){
         struct persone p;
         printf("Wpisz imię : ");
         scanf("%s", p.firstname);
@@ -111,20 +111,24 @@ void task_2(){
         printf("\nPress enter");
         getchar(); getchar();    
 
-        printf("Wpisz 0, jezeli chcesz wrocic do menu.\n");
-        char powrot = 0;
-        while ( (powrot = get_choice())!= 'Q' )
+        printf("Wpisz 0, jezeli chcesz wrocic do menu.\nWpisz 1, jezeli chcesz chcesz wyjsc z programu.\n");
+        char choice = 0;
+        while ( (choice = get_choice())!= 'Q' )
         {
-            switch(powrot){
+            switch(choice){
                 case '0':
                     show_menu();
                     break;
+
+                case '1':
+                    return 0;
                 
                 default:
                     printf("Wybierz odpowiednią opcję powyżej\n\n");
                     show_menu();
             }
         }
+    return 0;
 }
 
 void task_3(){
