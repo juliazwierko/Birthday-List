@@ -7,9 +7,8 @@ char show_menu();
 char get_choice();
 void clear_buffer();
 void task_1();
-void task_2();
+int task_2();
 void task_3();
-void task_4();
 int wyjscie();
 
 struct date {
@@ -65,7 +64,7 @@ char show_menu(){
 
             case '4':
                 printf("wyjscie z programu\n");
-                task_4();
+                return 0;
                 break;
             default:
                 printf("Wybierz odpowiednią opcję powyżej\n\n");
@@ -94,7 +93,7 @@ char get_choice(){
 void task_1(){
 }
 
-void task_2(){
+int task_2(){
         printf("\n-------------------------------------------------\n");
         struct persone p;
         printf("Wpisz imię : ");
@@ -120,17 +119,16 @@ void task_2(){
                 case '0':
                     show_menu();
                     break;
-                
+                case '1':
+                    return 0;
                 default:
                     printf("Wybierz odpowiednią opcję powyżej\n\n");
             }
         }
+    return 0;
 }
 
 void task_3(){
-}
-
-void task_4(){
 }
 
 int wyjscie(){
