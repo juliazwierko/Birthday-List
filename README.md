@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Ten projekt, który jest w fazie rozwoju, to program, który pomoże 
+Ten projekt - program, który pomoże 
 Ci zapisać dane urodzinowe Twoich znajomych, rodziców, 
 kolegów z uczelni, a nawet celebrytów :D
 -------------------------------------------------------------------
