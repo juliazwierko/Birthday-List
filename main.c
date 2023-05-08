@@ -1,136 +1,82 @@
 #include <stdio.h>
-#include <ctype.h>
-#include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 
-char show_menu();
-char get_choice();
-void clear_buffer();
-void task_1();
-int task_2();
-void task_3();
-int wyjscie();
-
-struct date {
-  int day;
-  char month[20];
-  int year;
-};
-struct persone {
-  char firstname[20];
-  char lastname[20];
-  struct date bd;
+struct osoba {
+    char imie[50];
+    int dzien;
+    int miesiac;
+    int rok;
 };
 
-int main(int argc, char const *argv[]) {  
-    show_menu();
-    return 0;
+void wyswietlListe(struct osoba *tablica, int liczbaOsob) {
+    printf("\nLista zarejestrowanych urodzin:\n");
+    printf("=================================\n");
+    for(int i=0; i<liczbaOsob; i++) {
+        printf("%d. %s - %d.%d.%d\n", i+1, tablica[i].imie, tablica[i].dzien, tablica[i].miesiac, tablica[i].rok);
+    }
 }
 
-char show_menu(){   
-    printf("\n-------------------------------------------------\n");
-    printf("Witamy na Twojej osobistej liście urodzin\n");
-    printf("-------------------------------------------------\n\n");
+void dodajOsobe(struct osoba *tablica, int *liczbaOsob) {
+    printf("\nDodaj osobę\n");
+    printf("============\n");
+    printf("Imię: ");
+    scanf("%s", tablica[*liczbaOsob].imie);
+    printf("Dzień urodzin: ");
+    scanf("%d", &tablica[*liczbaOsob].dzien);
+    printf("Miesiąc urodzin: ");
+    scanf("%d", &tablica[*liczbaOsob].miesiac);
+    printf("Rok urodzin: ");
+    scanf("%d", &tablica[*liczbaOsob].rok);
+    (*liczbaOsob)++;
+}
 
-    printf("-------------------------------------------------\n");
-    printf("Menu:\n");
-    printf("1: zobacz listę urodzin\n");
-    printf("2: dodaj nowe urodziny do listy\n");
-    printf("3: zmiany listy urodzin\n");
-    printf("4: wyjscie z programu\n");
-    printf("-------------------------------------------------\n\n");
+void usunOsobe(struct osoba *tablica, int *liczbaOsob) {
+    printf("\nUsuń osobę\n");
+    printf("===========\n");
+    printf("Numer osoby do usunięcia: ");
+    int numer;
+    scanf("%d", &numer);
+    if(numer < 1 || numer > *liczbaOsob) {
+        printf("Błędny numer osoby!\n");
+        return;
+    }
+    numer--;
+    for(int i=numer; i<*liczbaOsob-1; i++) {
+        tablica[i] = tablica[i+1];
+    }
+    (*liczbaOsob)--;
+    printf("Osoba została usunięta.\n");
+}
 
-    char choice = 0;
-    while ( (choice = get_choice())!= 'Q' )
-    {
-        switch(choice){
-            case '1':
-                printf("zobacz listę urodzin\n");
-                task_1();
+int main() {
+    int liczbaOsob = 0;
+    struct osoba *tablica = (struct osoba*)malloc(sizeof(struct osoba)*100); // alokacja tablicy na maksymalnie 100 osób
+    
+    int wybor = 0;
+    do {
+        printf("\nMenu główne:\n");
+        printf("=============\n");
+        printf("1. Wyświetl listę zarejestrowanych urodzin\n");
+        printf("2. Dodaj osobę\n");
+        printf("3. Usuń osobę\n");
+        printf("4. Zakończ program\n");
+        printf("Wybierz opcję: ");
+        scanf("%d", &wybor);
+        
+        switch(wybor) {
+            case 1:
+                wyswietlListe(tablica, liczbaOsob);
                 break;
-            
-            case '2':
-                printf("\n-------------------------------------------------\n");
-                printf("dodaj nowe urodziny do listy:\n");
-                printf("-------------------------------------------------\n\n");
-
-                task_2();
+            case 2:
+                dodajOsobe(tablica, &liczbaOsob);
                 break;
-            
-            case '3':
-                printf("zmiany listy urodzin\n");
-                task_3();
-                break;
-
-            case '4':
-                printf("wyjscie z programu\n");
-                return 0;
+            case 3:
+                usunOsobe(tablica, &liczbaOsob);
                 break;
             default:
-                printf("Wybierz odpowiednią opcję powyżej\n\n");
-                show_menu();
-        }
+        break;
     }
-    
-
-    return 0;
-}
-
-void clear_buffer(){
-    while( getchar()!= '\n') 
-        continue;
-}
-
-char get_choice(){
-    char choice = 0;
-    while( !isgraph(choice = getchar()) )
-        continue; 
-    clear_buffer();
-
-    return choice;
-}
-
-void task_1(){
-}
-
-int task_2(){
-        printf("\n-------------------------------------------------\n");
-        struct persone p;
-        printf("Wpisz imię : ");
-        scanf("%s", p.firstname);
-        printf("Wpisz nazwisko : ");
-        scanf("%s", p.lastname);
-        printf("Urodziy \nDzień : ");
-        scanf("%d", &p.bd.day);
-        printf("Miesiac: ");
-        scanf("%s", p.bd.month);
-        printf("Rok: ");
-        scanf("%d", &p.bd.year);
-        printf("\nWpisałeś : %s %s, data urodzin %d %s %d roku",
-                p.firstname, p.lastname, p.bd.day, p.bd.month, p.bd.year);
-        printf("\n-------------------------------------------------\n\n");  
-
-        printf("\n-------------------------------------------------\n");
-        printf("Wpisz 0, jezeli chcesz wrocic do menu.\nWpisz 1, jezeli chcesz dodac nowa osobe.\n");
-        char choice = 0;
-        while ( (choice = get_choice())!= 'Q' )
-        {
-            switch(choice){
-                case '0':
-                    show_menu();
-                    break;
-                case '1':
-                    return 0;
-                default:
-                    printf("Wybierz odpowiednią opcję powyżej\n\n");
-            }
-        }
-    return 0;
-}
-
-void task_3(){
-}
-
-int wyjscie(){
+    } while(1);
     return 0;
 }
