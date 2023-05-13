@@ -9,8 +9,8 @@ Program składa się z menu głównego, w którym użytkownik może:
 
 -> przeglądać listę zarejestrowanych urodzin
 
--> dokonać korekt w już gotowej liście, na przykład usunuć 
-   jakiś kontakt
+-> dokonać korekt w już gotowej liście, na przykład usuwać 
+   kontakty
    
 -> dodawać nowe osoby
 
