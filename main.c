@@ -74,9 +74,11 @@ int main() {
             case 3:
                 usunOsobe(tablica, &liczbaOsob);
                 break;
+            case 4:
+                return 0;
             default:
-        break;
-    }
+                break;
+         }
     } while(1);
     return 0;
 }
